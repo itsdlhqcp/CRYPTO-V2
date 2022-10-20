@@ -4,6 +4,7 @@ class Transaction {
     this.id = uuid();
     this.outputMap = this.createOutputMap({ senderWallet, recipient, amount });
     this.input = this.createInput({ senderWallet, outputMap: this.outputMap });
+    
   }
 
   createOutputMap({ senderWallet, recipient, amount }) {
