@@ -42,11 +42,6 @@
 //       });
 // });
  
-
- 
-
-
-
 const Wallet = require('./index');
 const Transaction = require('./transaction');
 const { verifySignature } = require('../util');
@@ -222,3 +217,4 @@ describe('Wallet', () => {
     });
   });
 });
+ 
