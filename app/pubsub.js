@@ -134,8 +134,10 @@ const credentials = {
 
 const CHANNELS = {
   TEST: 'TEST',
+  // BLOCKCHAIN: 'BLOCKCHAIN',
   BLOCKCHAIN: 'BLOCKCHAIN',
   TRANSACTION: 'TRANSACTION'
+  
 };
 
 class PubSub {
@@ -153,13 +155,22 @@ class PubSub {
 
     const parsedMessage = JSON.parse(message);
 
+    // switch(channel) {
+    //   case CHANNELS.BLOCKCHAIN:
+    //     this.blockchain.replaceChain(parsedMessage, true, () => {
+    //       this.transactionPool.clearBlockchainTransactions({
+    //          chain: parsedMessage
+    //       });
+    //     });
+    //     break;
+    //   case CHANNELS.TRANSACTION:
+    //     this.transactionPool.setTransaction(parsedMessage);
+    //     break;
+    //   default:
+    //     return;
     switch(channel) {
       case CHANNELS.BLOCKCHAIN:
-        this.blockchain.replaceChain(parsedMessage, true, () => {
-          this.transactionPool.clearBlockchainTransactions({
-             chain: parsedMessage
-          });
-        });
+        this.blockchain.replaceChain(parsedMessage);
         break;
       case CHANNELS.TRANSACTION:
         this.transactionPool.setTransaction(parsedMessage);
