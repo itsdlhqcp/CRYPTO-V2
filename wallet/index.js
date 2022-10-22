@@ -23,7 +23,7 @@ class Wallet {
 
     this.publicKey = this.keyPair.getPublic().encode('hex');
   }
-  sign(data) {
+   sign(data) {
     return this.keyPair.sign(cryptoHash(data));
   }
 };
