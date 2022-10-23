@@ -31,7 +31,7 @@ describe('genesis()', () => {
       expect(genesisBlock instanceof Block).toBe(true);
     });
 
-    it ('returns a Block instance', ()=> {
+    it ('returns a Block genesis data', ()=> {
         expect(genesisBlock).toEqual(GENESIS_DATA);
       });
 });
