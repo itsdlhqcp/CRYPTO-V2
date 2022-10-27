@@ -71,14 +71,17 @@ class PubSub {
   // }
 
   //right code here below
+  // publish({ channel, message}) {
+  //   if (this.subscriber){
+  //   this.subscriber.unsubscribe(channel, () => {
+  //     this.publisher.publish(channel, message, () => {
+  //       this.subscriber.subscribe(channel);
+  //     });
+  //   });
+  // }
+  // }
   publish({ channel, message}) {
-    if (this.subscriber){
-    this.subscriber.unsubscribe(channel, () => {
-      this.publisher.publish(channel, message, () => {
-        this.subscriber.subscribe(channel);
-      });
-    });
-  }
+    this.pubnub.publish({ channel, message });
   }
 
   broadcastChain() {

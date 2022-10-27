@@ -49,7 +49,7 @@ class App extends Component {
         <img className='logo' src={logo}></img>
         <br />
            <div>
-        Welcome to the blockchain...</div>
+        Welcome to the blockchain...</div>z
         <br />
         <div>Welcome to the blockchain...</div>
         <div>Address: {address}</div>
