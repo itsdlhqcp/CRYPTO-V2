@@ -1,0 +1,13 @@
+body {
+    background-color:black;
+    color: azure;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Quicksand';
+    padding-top: 5%;
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+}
