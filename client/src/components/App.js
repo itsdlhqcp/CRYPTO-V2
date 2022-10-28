@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Blocks from './Block';
+import Blocks from './Blocks';
 import logo from '../assets/logo.gif';
 
 class App extends Component {

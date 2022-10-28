@@ -1,30 +1,24 @@
 import React, { Component } from 'react';
 
-class Blocks extends Component {
-  state = { blocks: [] };
-
-  componentDidMount() {
-    fetch('http://localhost:3000/api/blocks')
-      .then(response => response.json())
-      .then(json => this.setState({ blocks: json }));
-  }
-
+class Block extends Component {
   render() {
-    console.log('this.state', this.state.blocks);
-  
+    const { timestamp, hash, data } = this.props.block;
+
+    const hashDisplay = `${hash.substring(0, 15)}...`;
+    const stringifiedData = JSON.stringify(data);
+
+    const dataDisplay = stringifiedData.length > 35 ?
+      `${stringifiedData.substring(0, 35)}...` :
+      stringifiedData;
+
     return (
-      <div>
-        <h3>Blocks</h3>
-        {
-          this.state.blocks.map(block => {
-            return (
-              <div key={block.hash} className='Block'>{block.hash}</div>
-            )
-          })
-        }
+      <div className='Block'>
+        <div>Hash: {hashDisplay}</div>
+        <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
+        <div>Data: {dataDisplay}</div>
       </div>
-    );
+    )
   }
 }
 
-export default Blocks;
+export default Block;
