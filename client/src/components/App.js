@@ -23,6 +23,7 @@ class App extends Component {
         <div><span style={{ color: 'lightgreen' }}>Welcome to our new  blockchain...</span></div>
         <br />
         <div><Link to='/blocks'>Blocks</Link></div>
+        <div><Link to='/conduct-transaction'>Conduct a Transaction</Link></div>
         <br />
        <div className='WalletInfo'>
        <div><span style={{ color: 'red' }}>Wallet Address:</span> {address}</div>
