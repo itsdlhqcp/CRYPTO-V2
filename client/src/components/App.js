@@ -15,15 +15,17 @@ class App extends Component {
     const { address, balance } = this.state.walletInfo;
 
     return (
-      <div>
-        <img src={logo} alt="logo"/>
+      <div className='App'>
         <br />
-           <div>
-        Welcome to the blockchain...</div>
+        <div><span style={{ color: 'lightgreen' }}>Hey , </span><span style={{ color: 'lightgreen' }}>Let's Explore the sparkles of new space token </span></div>
+        <img className='logo' src={logo} alt="loading..."/>
         <br />
-        <div>Welcome to the blockchain...</div>
-        <div>Address: {address}</div>
-        <div>Balance: {balance}</div>
+        <div><span style={{ color: 'lightgreen' }}>Welcome to our new  blockchain...</span></div>
+        <br />
+       <div className='WalletInfo'>
+       <div><span style={{ color: 'red' }}>Wallet Address:</span> {address}</div>
+        <div><span style={{ color: 'red' }}>Your Current Balance:</span> {balance}</div>
+       </div>
         <br />
         <Blocks/>
       </div>

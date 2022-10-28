@@ -20559,7 +20559,8 @@ var Blocks = /*#__PURE__*/function (_Component) {
       console.log('this.state', this.state.blocks);
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block) {
         return /*#__PURE__*/_react.default.createElement("div", {
-          key: block.hash
+          key: block.hash,
+          className: "Block"
         }, block.hash);
       }));
     }
@@ -20568,7 +20569,9 @@ var Blocks = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 var _default = Blocks;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"assets/logo.gif":[function(require,module,exports) {
+module.exports = "/logo.9396945d.gif";
+},{}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20577,6 +20580,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _Block = _interopRequireDefault(require("./Block"));
+var _logo = _interopRequireDefault(require("../assets/logo.gif"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -20592,7 +20596,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-// import logo from '../assets/log.jpeg';
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
   var _super = _createSuper(App);
@@ -20626,14 +20629,42 @@ var App = /*#__PURE__*/function (_Component) {
       var _this$state$walletInf = this.state.walletInfo,
         address = _this$state$walletInf.address,
         balance = _this$state$walletInf.balance;
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the blockchain..."), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the blockchain..."), /*#__PURE__*/_react.default.createElement("div", null, "Address: ", address), /*#__PURE__*/_react.default.createElement("div", null, "Balance: ", balance), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Block.default, null));
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "App"
+      }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+        style: {
+          color: 'lightgreen'
+        }
+      }, "Hey , "), /*#__PURE__*/_react.default.createElement("span", {
+        style: {
+          color: 'lightgreen'
+        }
+      }, "Let's Explore the sparkles of new space token ")), /*#__PURE__*/_react.default.createElement("img", {
+        className: "logo",
+        src: _logo.default,
+        alt: "loading..."
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+        style: {
+          color: 'lightgreen'
+        }
+      }, "Welcome to our new  blockchain...")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+        className: "WalletInfo"
+      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+        style: {
+          color: 'red'
+        }
+      }, "Wallet Address:"), " ", address), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+        style: {
+          color: 'red'
+        }
+      }, "Your Current Balance:"), " ", balance)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Block.default, null));
     }
   }]);
   return App;
 }(_react.Component);
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Block":"components/Block.js"}],"../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./Block":"components/Block.js","../assets/logo.gif":"assets/logo.gif"}],"../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -20725,7 +20756,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52635" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64286" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
