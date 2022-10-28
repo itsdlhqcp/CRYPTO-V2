@@ -1,5 +1,3 @@
-
-
 const PubNub = require('pubnub');
 
 const credentials = {
@@ -10,10 +8,8 @@ const credentials = {
 
 const CHANNELS = {
   TEST: 'TEST',
-  
   BLOCKCHAIN: 'BLOCKCHAIN',
   TRANSACTION: 'TRANSACTION'
-  
 };
 
 class PubSub {
@@ -80,6 +76,8 @@ class PubSub {
   //   });
   // }
   // }
+
+  //code for pubnub below and redis above
   publish({ channel, message}) {
     this.pubnub.publish({ channel, message });
   }

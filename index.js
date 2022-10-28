@@ -8,6 +8,10 @@ const TransactionPool = require('./wallet/transaction-pool');
 const Wallet = require('./wallet');
 const TransactionMiner = require('./app/transaction-miner');
 
+//////////##### production code #######///////////
+const isDevelopment = process.env.ENV === 'development';
+
+
 const app = express();
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
@@ -17,8 +21,7 @@ const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wal
 
 const DEFAULT_PORT = 3000;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
-///experimentation code ::--
-// setTimeout(() => pubsub.broadcastChain(), 1000);
+
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/dist')));
@@ -27,29 +30,20 @@ app.get('/api/blocks', (req, res) => {
   res.json(blockchain.chain);
 });
 
-// app.post('/api/mine', (req, res) => {
-//     const { data } = req.body;
-  
-//     blockchain.addBlock({ data });
 
-//     pubsub.broadcastChain();
-  
-//     res.redirect('/api/blocks');
-//   });
 app.post('/api/transact', (req, res) => {
   const { amount, recipient } = req.body;
 
-  // const transaction = wallet.createTransaction({ recipient, amount });
-  // let transaction;
+
   let transaction = transactionPool
     .existingTransaction({ inputAddress: wallet.publicKey });
 
   try {
-    // wallet.createTransaction({ recipient, amount });
+   
     if (transaction) {
       transaction.update({ senderWallet: wallet, recipient, amount });
     } else {
-      // transaction = wallet.createTransaction({ recipient, amount });
+
       transaction = wallet.createTransaction({
         recipient,
         amount,
@@ -63,9 +57,7 @@ app.post('/api/transact', (req, res) => {
   transactionPool.setTransaction(transaction);
   pubsub.broadcastTransaction(transaction);
 
-  // console.log('transactionPool', transactionPool);
 
-  // res.json({ transaction });
   res.json({ type: 'success', transaction });
 });
 
@@ -90,11 +82,10 @@ app.get('/api/wallet-info', (req, res) => {
 
 
 app.get('*', (req, res) => {
-  // res.sendFile(path.join(__dirname, './client/index.html'));
   res.sendFile(path.join(__dirname, 'client/dist/index.html'));
 });
 
-  // const syncChains = () => {
+  
     const syncWithRootState = () => {
     request({ url: `${ROOT_NODE_ADDRESS}/api/blocks` }, (error, response, body) => {
       if (!error && response.statusCode === 200) {
@@ -115,30 +106,32 @@ app.get('*', (req, res) => {
     });
   };
 
-   const walletFoo = new Wallet();
-   const walletBar = new Wallet();
+////##if dev check implimented### ////////
+if (isDevelopment) {
+    const walletFoo = new Wallet();
+    const walletBar = new Wallet();
 
-   const generateWalletTransaction = ({ wallet, recipient, amount }) => {
-   const transaction = wallet.createTransaction({
+    const generateWalletTransaction = ({ wallet, recipient, amount }) => {
+    const transaction = wallet.createTransaction({
     recipient, amount, chain: blockchain.chain
-  });
+    });
 
     transactionPool.setTransaction(transaction);
-};
+    };
 
-const walletAction = () => generateWalletTransaction({
+    const walletAction = () => generateWalletTransaction({
   wallet, recipient: walletFoo.publicKey, amount: 5
-});
+    });
 
-const walletFooAction = () => generateWalletTransaction({
+    const walletFooAction = () => generateWalletTransaction({
   wallet: walletFoo, recipient: walletBar.publicKey, amount: 10
-});
+    });
 
-const walletBarAction = () => generateWalletTransaction({
+    const walletBarAction = () => generateWalletTransaction({
   wallet: walletBar, recipient: wallet.publicKey, amount: 15
-});
+    });
 
-for (let i=0; i<10; i++) {
+    for (let i=0; i<10; i++) {
   if (i%3 === 0) {
     walletAction();
     walletFooAction();
@@ -151,8 +144,8 @@ for (let i=0; i<10; i++) {
   }
 
   transactionMiner.mineTransactions();
-}
-
+    }
+  }
 let PEER_PORT;
 
 if (process.env.GENERATE_PEER_PORT === 'true') {
@@ -160,11 +153,12 @@ if (process.env.GENERATE_PEER_PORT === 'true') {
 
 }
 
-const PORT = PEER_PORT || DEFAULT_PORT
+
+///////####### process env port code:process.env.PORT ###/////////
+const PORT = process.env.PORT || PEER_PORT || DEFAULT_PORT
 app.listen(PORT, () => {
   console.log(`listening at localhost:${PORT}`);
   if (PORT !== DEFAULT_PORT) {
-    // syncChains();
     syncWithRootState();
   }
 });
