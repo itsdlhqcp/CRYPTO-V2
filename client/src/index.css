@@ -38,7 +38,7 @@ body {
     text-decoration: underline;
   }
 
-  .ConductTransaction {
+  .ConductTransaction, .TransactionPool {
     margin: 10%;
   }
 
