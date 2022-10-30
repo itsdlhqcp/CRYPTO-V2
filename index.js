@@ -51,15 +51,15 @@ app.get('/api/blocks/:id', (req, res) => {
 });
 ////###some anonymous code ### down////
 
-app.post('/api/mine', (req, res) => {
-  const { data } = req.body;
+// app.post('/api/mine', (req, res) => {
+//   const { data } = req.body;
 
-  blockchain.addBlock({ data });
+//   blockchain.addBlock({ data });
 
-  pubsub.broadcastChain();
+//   pubsub.broadcastChain();
 
-  res.redirect('/api/blocks');
-});
+//   res.redirect('/api/blocks');
+// });
 
 
 app.post('/api/transact', (req, res) => {
