@@ -42,3 +42,8 @@ body {
     margin: 10%;
   }
 
+  @media screen and (max-width: 1200px) {
+    .main-container{
+    width: 95%;
+}
+  }

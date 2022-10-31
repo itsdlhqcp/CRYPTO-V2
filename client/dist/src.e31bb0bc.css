@@ -42,6 +42,11 @@ body {
     margin: 10%;
   }
 
+  @media screen and (max-width: 1200px) {
+    .main-container{
+    width: 95%;
+}
+  }
 
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */
