@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.gif';
 
 
+
 class App extends Component {
+  
   state = { walletInfo: {} };
 
   componentDidMount() {
@@ -13,6 +15,7 @@ class App extends Component {
   }
 
   render() {
+    
     const { address, balance } = this.state.walletInfo;
 
     return (

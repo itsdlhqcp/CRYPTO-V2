@@ -42,9 +42,10 @@ body {
     margin: 10%;
   }
 
-  @media screen and (max-width: 1200px) {
-    .main-container{
+  @media screen and (max-width: 500px) {
+    .App{
     width: 95%;
+    size: 300px;
 }
   }
 
