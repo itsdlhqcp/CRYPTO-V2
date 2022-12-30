@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.gif';
+import logo from '../assets/logo.png';
+import Wallet_hide from './Wallet_hide';
 
 
 
@@ -32,6 +33,7 @@ class App extends Component {
         <br />
        <div className='WalletInfo'>
        <div><span style={{ color: 'red' }}>Wallet Address:</span> {address}</div>
+       <div><Wallet_hide/></div>
         <div><span style={{ color: 'red' }}>Your Current Balance:</span> {balance}</div>
        </div>
       </div>

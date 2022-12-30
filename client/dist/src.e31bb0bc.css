@@ -42,12 +42,28 @@ body {
     margin: 10%;
   }
 
-  @media screen and (max-width: 500px) {
+  /* @media screen and (max-width: 500px) {
     .App{
-    width: 95%;
-    size: 300px;
+    width: 90%;
+    
 }
-  }
+  } */
+
+
+
+  
+
+
+
+
+
+
+.copy{
+    background-color: rgb(77,144,253);
+}
+.copied{
+    background-color: rgb(39,196,82);
+}
 
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */
